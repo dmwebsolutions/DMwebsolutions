@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D M Web Solutions | Data & Dialer Experts</title>
+<meta name="description" content="Premium data, dialer systems, and VoIP solutions provider. Best dialer setup, data packages, IVR systems and VoIP services.">
+<meta name="keywords" content="data provider, dialer systems, VoIP, spoofing dialer, IVR, Vici dialer, manual dialer, data sales, Karachi">
+<meta property="og:title" content="D M Web Solutions | Data & Dialer Experts">
+<meta property="og:description" content="Smart Data. Smarter Dialers. Premium telecom solutions from Karachi.">
+<meta name="theme-color" content="#0a0a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #020209;
+  --bg-secondary: #08081a;
+  --bg-card: rgba(12, 12, 35, 0.85);
+  --neon-blue: #00d4ff;
+  --neon-purple: #8b5cf6;
+  --neon-cyan: #06ffd5;
+  --neon-pink: #ff006e;
+  --accent: #00d4ff;
+  --text-primary: #f0f0ff;
+  --text-secondary: #8899bb;
+  --border-glow: rgba(0, 212, 255, 0.25);
+  --gradient-main: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 50%, #ff006e 100%);
+  --gradient-card: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.08) 100%);
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-text: 'Inter', sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: clamp(14px, 2.8vw, 16px); }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: auto;
+}
+body.cursor-custom { cursor: none; }
+img { max-width: 100%; height: auto; display: block; }
+a, button { -webkit-tap-highlight-color: rgba(0, 212, 255, 0.15); }
+
+/* CUSTOM CURSOR */
+.cursor { position: fixed; width: 12px; height: 12px; background: var(--neon-blue); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s; mix-blend-mode: screen; display: none; }
+body.cursor-custom .cursor { display: block; }
+.cursor-trail { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(0,212,255,0.4); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); transition: transform 0.15s ease, left 0.12s ease, top 0.12s ease; display: none; }
+body.cursor-custom .cursor-trail { display: block; }
+
+/* PRELOADER */
+#preloader {
+  position: fixed; inset: 0; z-index: 99997;
+  background: var(--bg-primary);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+#preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-logo { font-family: var(--font-display); font-size: 2rem; font-weight: 900; letter-spacing: 3px; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 2rem; animation: logoPulse 1s ease-in-out infinite alternate; }
+@keyframes logoPulse { from { filter: drop-shadow(0 0 10px rgba(0,212,255,0.5)); } to { filter: drop-shadow(0 0 30px rgba(139,92,246,0.8)); } }
+.preloader-bar { width: 220px; height: 3px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; position: relative; }
+.preloader-fill { height: 100%; background: var(--gradient-main); border-radius: 10px; animation: fill 2.2s ease-in-out forwards; }
+@keyframes fill { 0%{width:0%} 100%{width:100%} }
+.preloader-text { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 4px; margin-top: 1rem; animation: blink 1s infinite; }
+@keyframes blink { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--neon-blue), var(--neon-purple)); border-radius: 5px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  padding: 1.1rem 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(2,2,9,0.7);
+  border-bottom: 1px solid rgba(0,212,255,0.12);
+  transition: all 0.4s ease;
+}
+nav.scrolled { padding: 0.7rem 5%; background: rgba(2,2,9,0.95); border-bottom-color: rgba(0,212,255,0.25); }
+.nav-logo { font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; letter-spacing: 2px; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+.nav-logo span { color: var(--neon-cyan); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-family: var(--font-body); font-weight: 500; font-size: 0.95rem; letter-spacing: 1px; transition: color 0.3s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--neon-blue); transition: width 0.3s ease; }
+.nav-links a:hover { color: var(--neon-blue); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { background: transparent; border: 1.5px solid var(--neon-blue); color: var(--neon-blue); padding: 0.55rem 1.4rem; border-radius: 6px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+.nav-cta:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 25px rgba(0,212,255,0.5); }
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; cursor: pointer; padding: 0.5rem; z-index: 1001; border-radius: 8px; border: 1px solid rgba(0,212,255,0.2); background: rgba(0,212,255,0.06); transition: box-shadow 0.3s, border-color 0.3s; }
+.hamburger:hover { border-color: rgba(0,212,255,0.45); box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+.hamburger span { width: 22px; height: 2px; background: var(--neon-blue); border-radius: 2px; transition: transform 0.35s cubic-bezier(0.68,-0.55,0.27,1.55), opacity 0.25s; transform-origin: center; }
+.hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.mobile-menu { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; position: fixed; inset: 0; background: rgba(2,2,9,0.98); z-index: 998; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-12px); transition: opacity 0.45s ease, visibility 0.45s, transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+.mobile-menu.active { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+.mobile-menu a { font-family: var(--font-display); font-size: 1.4rem; color: var(--text-primary); text-decoration: none; transition: color 0.3s; }
+.mobile-menu a:hover { color: var(--neon-blue); }
+.mobile-close { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: var(--neon-blue); cursor: pointer; }
+
+/* HERO */
+#hero {
+  min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 100px 5% 60px;
+}
+#heroCanvas { position: absolute; inset: 0; z-index: 0; }
+.hero-grid-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove { 0%{background-position:0 0} 100%{background-position:60px 60px} }
+.hero-radial { position: absolute; inset: 0; z-index: 2; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,92,246,0.12) 0%, transparent 70%); }
+.hero-content { position: relative; z-index: 5; text-align: center; max-width: 900px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3); color: var(--neon-cyan); padding: 6px 18px; border-radius: 50px; font-size: 0.78rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeInDown 0.8s 0.2s both; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--neon-cyan); border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(6,255,213,0.5)} 50%{box-shadow:0 0 0 8px rgba(6,255,213,0)} }
+.hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 5rem); font-weight: 900; line-height: 1.08; letter-spacing: 2px; margin-bottom: 1rem; animation: fadeInUp 0.8s 0.4s both; }
+.hero-title .line1 { display: block; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-title .line2 { display: block; color: var(--text-primary); }
+.hero-slogan { font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.6rem); font-weight: 600; color: var(--neon-blue); letter-spacing: 4px; margin-bottom: 1rem; animation: fadeInUp 0.8s 0.55s both; text-shadow: 0 0 20px rgba(0,212,255,0.5); }
+.hero-tagline { font-family: var(--font-text); font-size: 1.1rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; animation: fadeInUp 0.8s 0.7s both; }
+.hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s 0.9s both; margin-bottom: 3rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  color: #000; font-family: var(--font-body); font-weight: 700; font-size: 1rem;
+  padding: 0.9rem 2.2rem; border-radius: 8px; border: none; cursor: pointer;
+  text-decoration: none; letter-spacing: 1px;
+  box-shadow: 0 0 30px rgba(0,212,255,0.35), 0 0 60px rgba(139,92,246,0.2);
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #06ffd5, #00d4ff); opacity: 0; transition: opacity 0.3s; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(0,212,255,0.6), 0 0 100px rgba(139,92,246,0.3); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary span { position: relative; z-index: 1; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 1.5px solid rgba(0,212,255,0.4); color: var(--neon-blue); font-family: var(--font-body); font-weight: 600; font-size: 1rem; padding: 0.9rem 2.2rem; border-radius: 8px; cursor: pointer; text-decoration: none; letter-spacing: 1px; transition: all 0.3s ease; }
+.btn-secondary:hover { border-color: var(--neon-blue); background: rgba(0,212,255,0.08); box-shadow: 0 0 25px rgba(0,212,255,0.2); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s 1.1s both; }
+.hero-stat { text-align: center; }
+.hero-stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat-label { font-size: 0.78rem; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; }
+.hero-float-icons { position: absolute; z-index: 4; pointer-events: none; }
+.float-icon { position: absolute; font-size: 2rem; animation: floatIcon 4s ease-in-out infinite alternate; opacity: 0.25; filter: drop-shadow(0 0 12px var(--neon-blue)); }
+.float-icon:nth-child(1) { top: 20%; left: 8%; animation-delay: 0s; }
+.float-icon:nth-child(2) { top: 60%; left: 5%; animation-delay: 1s; }
+.float-icon:nth-child(3) { top: 25%; right: 8%; animation-delay: 0.5s; }
+.float-icon:nth-child(4) { top: 65%; right: 6%; animation-delay: 1.5s; }
+.float-icon:nth-child(5) { top: 80%; left: 20%; animation-delay: 2s; }
+@keyframes floatIcon { 0%{transform:translateY(0) rotate(0deg)} 100%{transform:translateY(-20px) rotate(15deg)} }
+
+/* SECTION BASE */
+section { padding: 100px 5%; position: relative; }
+.section-tag { display: inline-block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 1rem; padding: 5px 16px; border: 1px solid rgba(6,255,213,0.25); border-radius: 50px; background: rgba(6,255,213,0.05); }
+.section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 1rem; }
+.section-title .grad { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-subtitle { font-family: var(--font-text); color: var(--text-secondary); font-size: 1rem; max-width: 550px; line-height: 1.7; margin-bottom: 3.5rem; }
+.section-header { text-align: center; }
+.section-header .section-subtitle { margin-left: auto; margin-right: auto; }
+
+/* DIVIDER */
+.neon-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), rgba(139,92,246,0.4), transparent); margin: 0; }
+
+/* ABOUT */
+#about { background: var(--bg-secondary); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-visual { position: relative; }
+.ceo-card {
+  background: rgba(12, 12, 35, 0.5); border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px; padding: 2.5rem; text-align: center;
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); position: relative; overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.ceo-card:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,212,255,0.22), 0 0 50px rgba(139,92,246,0.12); }
+.ceo-card::before { content: ''; position: absolute; inset: 0; background: var(--gradient-card); z-index: 0; }
+.ceo-avatar {
+  width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.2rem;
+  background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; position: relative; z-index: 1;
+  box-shadow: 0 0 40px rgba(0,212,255,0.4);
+}
+.ceo-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1; }
+.ceo-title { color: var(--neon-cyan); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; position: relative; z-index: 1; font-family: var(--font-body); }
+.ceo-company { color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px; position: relative; z-index: 1; }
+.ceo-location { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem; position: relative; z-index: 1; }
+.stat-chips { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+.stat-chip { flex: 1; min-width: 120px; background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 14px; padding: 1.2rem; text-align: center; backdrop-filter: blur(10px); }
+.stat-chip-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-chip-label { font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px; margin-top: 4px; }
+.about-text .section-tag, .about-text .section-title, .about-text .section-subtitle { text-align: left; }
+.mv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2rem; }
+.mv-card { background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 14px; padding: 1.5rem; backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s; }
+.mv-card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.5); }
+.mv-card-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+.mv-card-title { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: var(--neon-blue); letter-spacing: 2px; margin-bottom: 0.5rem; }
+.mv-card-text { font-family: var(--font-text); font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* SERVICES */
+#services { background: var(--bg-primary); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.service-card {
+  background: rgba(12, 12, 35, 0.55); border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 18px; padding: 2rem; cursor: pointer;
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); position: relative; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.service-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.08) 100%);
+  transition: opacity 0.4s;
+}
+.service-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gradient-main); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s;
+}
+.service-card:hover { transform: translateY(-10px); border-color: rgba(0,212,255,0.45); box-shadow: 0 25px 70px rgba(0,212,255,0.18), 0 0 40px rgba(139,92,246,0.12), inset 0 1px 0 rgba(255,255,255,0.08); }
+.service-card:hover::before { opacity: 1; }
+.service-card:hover::after { transform: scaleX(1); }
+.service-icon { width: 65px; height: 65px; border-radius: 16px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.3rem; transition: transform 0.3s, box-shadow 0.3s; }
+.service-icon svg { width: 34px; height: 34px; stroke: var(--neon-blue); fill: none; stroke-width: 1.8; flex-shrink: 0; filter: drop-shadow(0 0 8px rgba(0,212,255,0.4)); }
+.service-card:hover .service-icon { transform: scale(1.15) rotate(5deg); box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+.service-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.7rem; letter-spacing: 1px; }
+.service-desc { font-family: var(--font-text); font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+.service-tag { display: inline-block; margin-top: 1rem; font-size: 0.72rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--neon-blue); padding: 3px 10px; border: 1px solid rgba(0,212,255,0.2); border-radius: 4px; }
+
+/* SHOWCASE */
+#showcase { background: var(--bg-secondary); }
+.showcase-tabs { display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
+.tab-btn { background: transparent; border: 1px solid rgba(0,212,255,0.2); color: var(--text-secondary); padding: 0.6rem 1.8rem; border-radius: 50px; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; }
+.tab-btn.active, .tab-btn:hover { background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15)); border-color: var(--neon-blue); color: var(--neon-blue); box-shadow: 0 0 20px rgba(0,212,255,0.15); }
+.showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+.showcase-card {
+  border-radius: 16px; overflow: hidden; position: relative; cursor: pointer;
+  border: 1px solid var(--border-glow); transition: all 0.4s ease;
+}
+.showcase-card:hover { transform: scale(1.03); box-shadow: 0 20px 60px rgba(0,212,255,0.2); border-color: rgba(0,212,255,0.5); }
+.showcase-img {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  font-size: clamp(2.5rem, 8vw, 4rem); position: relative; overflow: hidden;
+}
+.showcase-img .showcase-ico { position: relative; z-index: 1; width: 72px; height: 72px; opacity: 0.95; stroke: var(--neon-blue); fill: none; stroke-width: 1.5; filter: drop-shadow(0 0 12px rgba(0,212,255,0.35)); }
+.showcase-img::before { content: ''; position: absolute; inset: 0; background: var(--gradient-main); opacity: 0.1; }
+.showcase-img-bg { position: absolute; inset: 0; background-size: 40px 40px; background-image: radial-gradient(rgba(0,212,255,0.3) 1px, transparent 1px); }
+.showcase-info { background: var(--bg-card); padding: 1.2rem; }
+.showcase-title { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
+.showcase-sub { font-size: 0.8rem; color: var(--text-secondary); font-family: var(--font-text); }
+.showcase-price { color: var(--neon-cyan); font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-top: 0.5rem; }
+
+/* CLIENTS */
+#clients { background: var(--bg-secondary); }
+.clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 1rem; max-width: 1000px; margin: 0 auto; }
+.client-logo-card {
+  background: rgba(12, 12, 35, 0.45); border: 1px solid rgba(0, 212, 255, 0.14);
+  border-radius: 16px; padding: 1.25rem 1rem; display: flex; align-items: center; justify-content: center;
+  min-height: 86px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s, border-color 0.4s, filter 0.45s ease;
+  filter: grayscale(1); cursor: default;
+}
+.client-logo-card:hover {
+  filter: grayscale(0);
+  transform: scale(1.06) translateY(-5px);
+  border-color: rgba(0,212,255,0.5);
+  box-shadow: 0 16px 48px rgba(0,212,255,0.2), 0 0 32px rgba(139,92,246,0.18);
+}
+.client-logo-inner { text-align: center; }
+.client-logo-mark {
+  width: 48px; height: 48px; margin: 0 auto 0.5rem; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(139,92,246,0.2));
+  border: 1px solid rgba(0,212,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 900;
+  color: var(--neon-blue); box-shadow: 0 0 20px rgba(0,212,255,0.15);
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.client-logo-card:hover .client-logo-mark { transform: rotate(-3deg) scale(1.05); box-shadow: 0 0 28px rgba(0,212,255,0.35); }
+.client-logo-text { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); transition: color 0.35s; }
+.client-logo-card:hover .client-logo-text { color: var(--neon-cyan); }
+
+/* PRICING */
+#pricing { background: var(--bg-primary); }
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; align-items: stretch; }
+.pricing-card {
+  background: rgba(12, 12, 35, 0.55); border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 20px; padding: 2rem; text-align: center;
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); position: relative; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease; display: flex; flex-direction: column;
+}
+.pricing-card::before { content: ''; position: absolute; inset: 0; background: var(--gradient-card); z-index: 0; }
+.pricing-card.featured { border-color: rgba(0,212,255,0.6); box-shadow: 0 0 40px rgba(0,212,255,0.12), 0 0 80px rgba(139,92,246,0.08); }
+.pricing-card:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,212,255,0.15); }
+.best-badge { position: absolute; top: 16px; right: -1px; background: linear-gradient(135deg, #00d4ff, #8b5cf6); color: #000; font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; border-radius: 4px 0 0 4px; z-index: 2; }
+.pricing-icon { font-size: 2.5rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.pricing-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text-primary); letter-spacing: 2px; margin-bottom: 1.2rem; position: relative; z-index: 1; }
+.pricing-main-price { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1; }
+.pricing-main-label { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.pricing-features { list-style: none; text-align: left; margin-bottom: 1.5rem; flex: 1; position: relative; z-index: 1; }
+.pricing-features li { padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: var(--font-text); font-size: 0.88rem; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+.pricing-features li::before { content: '▸'; color: var(--neon-blue); font-size: 0.7rem; flex-shrink: 0; }
+.pricing-btn { display: block; background: transparent; border: 1.5px solid var(--neon-blue); color: var(--neon-blue); padding: 0.8rem; border-radius: 8px; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; letter-spacing: 1px; cursor: pointer; text-decoration: none; transition: all 0.3s; position: relative; z-index: 1; margin-top: auto; }
+.pricing-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 30px rgba(0,212,255,0.4); }
+.pricing-card.featured .pricing-btn { background: linear-gradient(135deg, #00d4ff, #8b5cf6); border: none; color: #000; box-shadow: 0 0 30px rgba(0,212,255,0.3); }
+
+/* VIDEO */
+#video-section { background: var(--bg-secondary); }
+.video-wrapper {
+  max-width: 900px; margin: 0 auto; border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border-glow); position: relative;
+  box-shadow: 0 0 60px rgba(0,212,255,0.1), 0 0 120px rgba(139,92,246,0.08);
+}
+.video-placeholder {
+  width: 100%; height: 500px; background: var(--bg-card);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.video-placeholder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%); }
+.video-bg-anim { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,212,255,0.02) 2px, rgba(0,212,255,0.02) 4px); animation: scanlines 8s linear infinite; }
+@keyframes scanlines { 0%{background-position:0 0} 100%{background-position:0 100%} }
+.play-btn { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(139,92,246,0.2)); border: 2px solid rgba(0,212,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; position: relative; z-index: 1; transition: all 0.3s; margin-bottom: 1.5rem; }
+.video-placeholder:hover .play-btn { transform: scale(1.15); box-shadow: 0 0 50px rgba(0,212,255,0.4); background: linear-gradient(135deg, rgba(0,212,255,0.35), rgba(139,92,246,0.35)); }
+.video-title-text { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text-primary); position: relative; z-index: 1; text-align: center; letter-spacing: 1px; }
+.video-sub { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; position: relative; z-index: 1; font-family: var(--font-text); }
+.video-corner { position: absolute; width: 30px; height: 30px; border-color: var(--neon-blue); border-style: solid; opacity: 0.5; }
+.video-corner.tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.video-corner.tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.video-corner.bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.video-corner.br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+/* TESTIMONIALS */
+#testimonials { background: var(--bg-primary); overflow: hidden; }
+.testimonials-track-wrap { overflow: hidden; position: relative; }
+.testimonials-track-wrap::before, .testimonials-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 5; }
+.testimonials-track-wrap::before { left: 0; background: linear-gradient(to right, var(--bg-primary), transparent); }
+.testimonials-track-wrap::after { right: 0; background: linear-gradient(to left, var(--bg-primary), transparent); }
+.testimonials-track { display: flex; gap: 1.5rem; animation: scrollTrack 32s linear infinite; width: max-content; will-change: transform; }
+@media (max-width: 768px) {
+  .testimonials-track { animation-duration: 48s; }
+}
+.testimonials-track:hover { animation-play-state: paused; }
+@keyframes scrollTrack { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.testimonial-card {
+  background: rgba(12, 12, 35, 0.55); border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 18px; padding: 2rem; width: min(340px, 92vw); flex-shrink: 0;
+  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.testimonial-card:hover { border-color: rgba(0,212,255,0.45); box-shadow: 0 20px 50px rgba(0,212,255,0.15), 0 0 30px rgba(139,92,246,0.1); transform: translateY(-4px); }
+.stars { color: #fbbf24; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 3px; text-shadow: 0 0 12px rgba(251,191,36,0.35); }
+.testimonial-text { font-family: var(--font-text); font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.author-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #00d4ff, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 2px solid rgba(0,212,255,0.35); flex-shrink: 0; overflow: hidden; box-shadow: 0 0 16px rgba(0,212,255,0.2); }
+.author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.author-name { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
+.author-role { font-size: 0.78rem; color: var(--neon-cyan); letter-spacing: 1px; margin-top: 2px; }
+
+/* CONTACT */
+#contact { background: var(--bg-secondary); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-card { background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 14px; padding: 1.5rem; display: flex; align-items: center; gap: 1.2rem; backdrop-filter: blur(10px); transition: all 0.3s; text-decoration: none; }
+.contact-card:hover { border-color: rgba(0,212,255,0.5); transform: translateX(5px); box-shadow: 0 10px 40px rgba(0,212,255,0.1); }
+.contact-card-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.contact-card-label { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 3px; }
+.contact-card-value { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+.map-container { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-glow); height: 220px; position: relative; }
+.map-container iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(180deg) saturate(0.8); }
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-label { font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
+.form-input, .form-textarea {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 10px; padding: 0.9rem 1.2rem;
+  color: var(--text-primary); font-family: var(--font-text); font-size: 0.95rem;
+  transition: all 0.3s; outline: none; width: 100%;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--neon-blue); background: rgba(0,212,255,0.04); box-shadow: 0 0 20px rgba(0,212,255,0.1); }
+.form-textarea { resize: vertical; min-height: 130px; }
+.form-submit { background: linear-gradient(135deg, #00d4ff, #8b5cf6); color: #000; border: none; border-radius: 10px; padding: 1rem; font-family: var(--font-body); font-weight: 700; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 30px rgba(0,212,255,0.25); }
+.form-submit:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(0,212,255,0.4); filter: brightness(1.1); }
+
+/* FOOTER */
+footer { background: #01010d; border-top: 1px solid rgba(0,212,255,0.12); padding: 4rem 5% 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; }
+.footer-tagline { font-family: var(--font-text); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+.footer-social { display: flex; gap: 0.8rem; }
+.social-btn { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,212,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+.social-btn:hover { background: rgba(0,212,255,0.1); border-color: var(--neon-blue); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,212,255,0.2); }
+.footer-col-title { font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 1.2rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links a { color: var(--text-secondary); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; transition: color 0.3s; display: flex; align-items: center; gap: 6px; }
+.footer-links a::before { content: '›'; color: var(--neon-blue); }
+.footer-links a:hover { color: var(--neon-blue); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-family: var(--font-text); font-size: 0.85rem; color: var(--text-secondary); }
+.footer-copy span { color: var(--neon-blue); }
+
+/* FLOATING BUTTONS */
+.floating-wa {
+  position: fixed; bottom: 30px; right: 30px; z-index: 9000;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; text-decoration: none; cursor: pointer;
+  box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+  animation: floatWA 3s ease-in-out infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.floating-wa:hover { transform: scale(1.15); box-shadow: 0 12px 40px rgba(37,211,102,0.6); }
+@keyframes floatWA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.floating-wa .wa-tooltip { position: absolute; right: 75px; background: rgba(10,10,30,0.95); border: 1px solid rgba(37,211,102,0.3); border-radius: 8px; padding: 6px 14px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; color: #25D366; white-space: nowrap; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.floating-wa:hover .wa-tooltip { opacity: 1; }
+.scroll-top { position: fixed; bottom: 100px; right: 33px; z-index: 9000; width: 46px; height: 46px; border-radius: 10px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; color: var(--neon-blue); transition: all 0.3s; opacity: 0; pointer-events: none; }
+.scroll-top.show { opacity: 1; pointer-events: all; }
+.scroll-top:hover { background: rgba(0,212,255,0.2); box-shadow: 0 0 20px rgba(0,212,255,0.3); transform: translateY(-3px); }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-right.active { opacity: 1; transform: translateX(0); }
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .testimonials-track { animation: none !important; }
+  .preloader-fill { animation: none !important; width: 100% !important; }
+  .hero-grid-overlay { animation: none !important; }
+  .float-icon { animation: none !important; }
+  .video-bg-anim { animation: none !important; }
+}
+
+/* GLOW ORBS */
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+.orb-blue { width: 400px; height: 400px; background: rgba(0,212,255,0.06); }
+.orb-purple { width: 500px; height: 500px; background: rgba(139,92,246,0.06); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  section { padding: 80px 4%; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .showcase-tabs { gap: 0.6rem; }
+  .tab-btn { padding: 0.55rem 1.2rem; font-size: 0.82rem; }
+  .hero-content { max-width: 100%; padding: 0 0.25rem; }
+  .hero-float-icons .float-icon { opacity: 0.15; }
+}
+@media (max-width: 900px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .mv-cards { grid-template-columns: 1fr; }
+  nav { padding: 0.85rem 4%; flex-wrap: wrap; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats { gap: 1.5rem; justify-content: center; }
+  #hero { padding: 90px 4% 50px; min-height: min(100vh, 900px); }
+}
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .hero-btns a { width: 100%; justify-content: center; min-height: 48px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .floating-wa { bottom: 20px; right: 16px; width: 54px; height: 54px; }
+  .scroll-top { bottom: 88px; right: 18px; }
+  .testimonials-track-wrap::before, .testimonials-track-wrap::after { width: 40px; }
+}
+@media (max-width: 600px) {
+  section { padding: 64px 4%; }
+  .video-placeholder { height: min(52vh, 320px); }
+  .hero-stat-num { font-size: clamp(1.35rem, 5vw, 1.8rem); }
+  .stat-chips { flex-direction: column; }
+  .stat-chip { min-width: 100%; }
+}
+@media (max-width: 380px) {
+  .nav-logo { font-size: 1rem; letter-spacing: 1px; }
+  .hero-slogan { letter-spacing: 2px; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-logo">D M WEB SOLUTIONS</div>
+  <div class="preloader-bar"><div class="preloader-fill"></div></div>
+  <div class="preloader-text">INITIALIZING SYSTEM...</div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">DM<span>WEB</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#showcase">Products</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="nav-cta" target="_blank">Get Started</a>
+  <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-close" id="mobileClose">✕</div>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#clients" onclick="closeMobile()">Clients</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#showcase" onclick="closeMobile()">Products</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://wa.me/message/AGRPNMEPWIPZM1" target="_blank" style="color:#25D366;">📱 WhatsApp Us</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-radial"></div>
+  <div class="hero-float-icons">
+    <div class="float-icon">🖥️</div>
+    <div class="float-icon">📡</div>
+    <div class="float-icon">☎️</div>
+    <div class="float-icon">💾</div>
+    <div class="float-icon">🌐</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">🚀 Premium Telecom Solutions</div>
+    <h1 class="hero-title">
+      <span class="line1">D M Web Solutions</span>
+      <span class="line2">Experts in Data &amp; Dialers</span>
+    </h1>
+    <div class="hero-slogan">Smart Data. Smarter Dialers.</div>
+    <p class="hero-tagline">Pakistan's leading provider of premium data packages, advanced dialer systems, and enterprise-grade VoIP solutions. Trusted by businesses worldwide.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="btn-primary" target="_blank">
+        <span>💬</span><span>Book Now on WhatsApp</span>
+      </a>
+      <a href="#services" class="btn-secondary">
+        <span>Explore Services</span><span>→</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="960" data-suffix="">0</div>
+        <div class="hero-stat-label">Happy Clients</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="1000" data-suffix="+">0</div>
+        <div class="hero-stat-label">Projects Done</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="99" data-suffix="%+">0</div>
+        <div class="hero-stat-label">Success Rate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter" data-target="11" data-suffix=" Years">0</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="orb orb-purple" style="top:-100px;right:-100px;"></div>
+  <div class="about-grid">
+    <div class="about-visual reveal-left">
+      <div class="ceo-card">
+        <div class="ceo-avatar">👨‍💼</div>
+        <div class="ceo-name">Mr Danish</div>
+        <div class="ceo-title">Chief Executive Officer</div>
+        <div class="ceo-company">D M Web Solutions</div>
+        <div class="ceo-location">📍 DHA Phase 4, Karachi, Pakistan</div>
+      </div>
+      <div class="stat-chips">
+        <div class="stat-chip">
+          <div class="stat-chip-num counter" data-target="960" data-suffix="">0</div>
+          <div class="stat-chip-label">Clients</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-num counter" data-target="1000" data-suffix="+">0</div>
+          <div class="stat-chip-label">Projects</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-num counter" data-target="99" data-suffix="%+">0</div>
+          <div class="stat-chip-label">Success Rate</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">Powering Businesses with <span class="grad">Smart Telecom</span> Solutions</h2>
+      <p class="section-subtitle">D M Web Solutions is a premier technology company based in Karachi, specializing in data intelligence, advanced dialer systems, and VoIP infrastructure. We help businesses connect smarter, sell faster, and grow bigger.</p>
+      <div class="mv-cards">
+        <div class="mv-card">
+          <div class="mv-card-icon">🎯</div>
+          <div class="mv-card-title">Our Mission</div>
+          <div class="mv-card-text">To deliver cutting-edge telecom solutions that transform how businesses communicate and convert leads at scale.</div>
+        </div>
+        <div class="mv-card">
+          <div class="mv-card-icon">🔮</div>
+          <div class="mv-card-title">Our Vision</div>
+          <div class="mv-card-text">To become South Asia's most trusted provider of intelligent data and dialer ecosystems for global markets.</div>
+        </div>
+        <div class="mv-card">
+          <div class="mv-card-icon">⚡</div>
+          <div class="mv-card-title">Speed &amp; Reliability</div>
+          <div class="mv-card-text">99.9% uptime SLA with rapid setup and 24/7 technical support across all service tiers.</div>
+        </div>
+        <div class="mv-card">
+          <div class="mv-card-icon">🌍</div>
+          <div class="mv-card-title">Global Reach</div>
+          <div class="mv-card-text">USA, UK, Canada and international VoIP routes with ultra-low-cost per-minute billing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-header">
+    <div class="section-tag reveal">Happy Clients</div>
+    <h2 class="section-title reveal">Trusted by <span class="grad">Industry Leaders</span></h2>
+    <p class="section-subtitle reveal">Teams worldwide rely on our data, dialers, and VoIP stack for predictable performance.</p>
+  </div>
+  <div class="clients-grid">
+    <div class="client-logo-card reveal delay-1"><div class="client-logo-inner"><div class="client-logo-mark">A</div><div class="client-logo-text">Apex Dial</div></div></div>
+    <div class="client-logo-card reveal delay-2"><div class="client-logo-inner"><div class="client-logo-mark">V</div><div class="client-logo-text">VoiceGrid</div></div></div>
+    <div class="client-logo-card reveal delay-3"><div class="client-logo-inner"><div class="client-logo-mark">N</div><div class="client-logo-text">Nova Leads</div></div></div>
+    <div class="client-logo-card reveal delay-1"><div class="client-logo-inner"><div class="client-logo-mark">C</div><div class="client-logo-text">CallForge</div></div></div>
+    <div class="client-logo-card reveal delay-2"><div class="client-logo-inner"><div class="client-logo-mark">P</div><div class="client-logo-text">Pulse CRM</div></div></div>
+    <div class="client-logo-card reveal delay-3"><div class="client-logo-inner"><div class="client-logo-mark">S</div><div class="client-logo-text">Signal Ops</div></div></div>
+    <div class="client-logo-card reveal delay-1"><div class="client-logo-inner"><div class="client-logo-mark">T</div><div class="client-logo-text">TeleLink</div></div></div>
+    <div class="client-logo-card reveal delay-2"><div class="client-logo-inner"><div class="client-logo-mark">R</div><div class="client-logo-text">Reach Pro</div></div></div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="orb orb-blue" style="bottom:-100px;left:-100px;"></div>
+  <div class="section-header">
+    <div class="section-tag reveal">Our Services</div>
+    <h2 class="section-title reveal">End-to-End Telecom <span class="grad">Solutions</span></h2>
+    <p class="section-subtitle reveal">From premium data packages to sophisticated dialer systems — we have everything your call center needs to dominate.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal delay-1">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg></div>
+      <div class="service-name">Data Sales</div>
+      <div class="service-desc">Premium quality consumer and business data packages. Verified, scrubbed, and ready to dial. Available in bulk volumes with full compliance.</div>
+      <div class="service-tag">From $40 / 20k Records</div>
+    </div>
+    <div class="service-card reveal delay-2">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.45a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div class="service-name">Manual Dialer</div>
+      <div class="service-desc">Simple and effective manual dialing setup. Perfect for small teams that need a cost-efficient outbound calling solution with full control.</div>
+      <div class="service-tag">$30 Setup</div>
+    </div>
+    <div class="service-card reveal delay-3">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="service-name">Vici Dialer</div>
+      <div class="service-desc">Enterprise-grade predictive dialing system powered by VICIdial. Supports multiple agents, real-time reporting, and CRM integration.</div>
+      <div class="service-tag">$100 Setup</div>
+    </div>
+    <div class="service-card reveal delay-1">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+      <div class="service-name">Spoofing Dialer</div>
+      <div class="service-desc">Advanced caller ID spoofing technology for enhanced call answer rates. Configurable with any number for targeted outreach campaigns.</div>
+      <div class="service-tag">$200 Setup</div>
+    </div>
+    <div class="service-card reveal delay-2">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="8" width="14" height="14" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><circle cx="9" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1" fill="currentColor" stroke="none"/><path d="M9 18h6"/></svg></div>
+      <div class="service-name">IVR Dialer</div>
+      <div class="service-desc">Fully automated IVR Press-1 system. Let AI qualify your leads automatically — agents only receive interested prospects ready to talk.</div>
+      <div class="service-tag">$150 Setup</div>
+    </div>
+    <div class="service-card reveal delay-3">
+      <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/></svg></div>
+      <div class="service-name">VoIP Solutions</div>
+      <div class="service-desc">Crystal-clear international VoIP routes at unbeatable rates. USA, UK, Canada coverage with redundant infrastructure and minimal latency.</div>
+      <div class="service-tag">From $0.001/min</div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- SHOWCASE -->
+<section id="showcase">
+  <div class="section-header">
+    <div class="section-tag reveal">Product Showcase</div>
+    <h2 class="section-title reveal">Our <span class="grad">Premium</span> Products</h2>
+    <p class="section-subtitle reveal">Explore our full catalog of data, dialer, and VoIP products designed for maximum ROI.</p>
+  </div>
+  <div class="showcase-tabs">
+    <button class="tab-btn active" onclick="filterShowcase('all', this)">All Products</button>
+    <button class="tab-btn" onclick="filterShowcase('data', this)">Data Packages</button>
+    <button class="tab-btn" onclick="filterShowcase('dialer', this)">Dialer Systems</button>
+    <button class="tab-btn" onclick="filterShowcase('voip', this)">VoIP Services</button>
+  </div>
+  <div class="showcase-grid" id="showcaseGrid">
+    <div class="showcase-card reveal" data-cat="data">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#020218,#0a0a30);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">Starter Data Pack</div>
+        <div class="showcase-sub">20,000 verified consumer records</div>
+        <div class="showcase-price">$40</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-1" data-cat="data">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#020220,#100a30);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16V9"/><path d="M12 16v-5"/><path d="M17 16V6"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">Pro Data Pack</div>
+        <div class="showcase-sub">60,000 scrubbed business records</div>
+        <div class="showcase-price">$100</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-2" data-cat="dialer">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#030820,#0a1535);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.45a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">Manual Dialer System</div>
+        <div class="showcase-sub">Simple outbound calling setup</div>
+        <div class="showcase-price">$30 Setup</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-3" data-cat="dialer">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#080320,#15053a);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">VICIdial Pro</div>
+        <div class="showcase-sub">Predictive dialer with full dashboard</div>
+        <div class="showcase-price">$100 Setup</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-1" data-cat="dialer">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#020815,#051528);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">Spoofing Dialer Pro</div>
+        <div class="showcase-sub">Advanced caller ID masking</div>
+        <div class="showcase-price">$200 Setup</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-2" data-cat="voip">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#020a18,#031a28);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">USA VoIP Routes</div>
+        <div class="showcase-sub">Crystal clear US termination</div>
+        <div class="showcase-price">$0.001/min</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-3" data-cat="voip">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#020520,#060a35);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">UK VoIP Routes</div>
+        <div class="showcase-sub">Premium UK termination</div>
+        <div class="showcase-price">$0.002/min</div>
+      </div>
+    </div>
+    <div class="showcase-card reveal delay-1" data-cat="dialer">
+      <div class="showcase-img" style="background:linear-gradient(135deg,#030520,#0a0830);">
+        <div class="showcase-img-bg"></div>
+        <svg class="showcase-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="8" width="14" height="14" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><circle cx="9" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1" fill="currentColor" stroke="none"/><path d="M9 18h6"/></svg>
+      </div>
+      <div class="showcase-info">
+        <div class="showcase-title">IVR Press-1 System</div>
+        <div class="showcase-sub">Automated lead qualification</div>
+        <div class="showcase-price">$150 Setup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="orb orb-purple" style="top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;"></div>
+  <div class="section-header">
+    <div class="section-tag reveal">Pricing Plans</div>
+    <h2 class="section-title reveal">Transparent <span class="grad">Pricing</span></h2>
+    <p class="section-subtitle reveal">No hidden fees. Pay only for what you use. Competitive rates built for high-volume call centers.</p>
+  </div>
+  <div class="pricing-grid">
+    <!-- DATA -->
+    <div class="pricing-card reveal delay-1">
+      <div class="pricing-icon">💾</div>
+      <div class="pricing-name">Data Packages</div>
+      <div class="pricing-main-price">$40</div>
+      <div class="pricing-main-label">Starting Price</div>
+      <ul class="pricing-features">
+        <li>20,000 records for $40 (minimum)</li>
+        <li>60,000 records for $100</li>
+        <li>Fully verified &amp; scrubbed</li>
+        <li>Consumer &amp; business data</li>
+        <li>Instant delivery on payment</li>
+        <li>Custom volumes available</li>
+      </ul>
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="pricing-btn" target="_blank">Get Data Now</a>
+    </div>
+    <!-- IVR -->
+    <div class="pricing-card featured reveal delay-2">
+      <div class="best-badge">⭐ BEST VALUE</div>
+      <div class="pricing-icon">🤖</div>
+      <div class="pricing-name">IVR Press-1 Dialer</div>
+      <div class="pricing-main-price">$150</div>
+      <div class="pricing-main-label">One-time Setup Fee</div>
+      <ul class="pricing-features">
+        <li>Full IVR system installation</li>
+        <li>USA VoIP: $0.009/min</li>
+        <li>UK VoIP: $0.002/min</li>
+        <li>Automated lead filtering</li>
+        <li>Press-1 to connect live agents</li>
+        <li>Reporting &amp; analytics included</li>
+      </ul>
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="pricing-btn" target="_blank">Start Now</a>
+    </div>
+    <!-- SPOOFING -->
+    <div class="pricing-card reveal delay-3">
+      <div class="pricing-icon">🎭</div>
+      <div class="pricing-name">Spoofing Dialer</div>
+      <div class="pricing-main-price">$200</div>
+      <div class="pricing-main-label">One-time Setup Fee</div>
+      <ul class="pricing-features">
+        <li>Full spoofing system setup</li>
+        <li>USA VoIP: $0.001/min</li>
+        <li>UK VoIP: $0.002/min</li>
+        <li>Custom caller ID configuration</li>
+        <li>High answer rate optimization</li>
+        <li>24/7 support included</li>
+      </ul>
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="pricing-btn" target="_blank">Get Started</a>
+    </div>
+    <!-- VICI -->
+    <div class="pricing-card reveal delay-1">
+      <div class="pricing-icon">🖥️</div>
+      <div class="pricing-name">Vici Dialer</div>
+      <div class="pricing-main-price">$100</div>
+      <div class="pricing-main-label">One-time Setup Fee</div>
+      <ul class="pricing-features">
+        <li>Full VICIdial installation</li>
+        <li>USA VoIP: $0.001/min</li>
+        <li>Canada/UK: $0.002/min</li>
+        <li>Multi-agent support</li>
+        <li>Real-time dashboards</li>
+        <li>CRM integration ready</li>
+      </ul>
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="pricing-btn" target="_blank">Get Started</a>
+    </div>
+    <!-- MANUAL -->
+    <div class="pricing-card reveal delay-2">
+      <div class="pricing-icon">📞</div>
+      <div class="pricing-name">Manual Dialer</div>
+      <div class="pricing-main-price">$30</div>
+      <div class="pricing-main-label">One-time Setup Fee</div>
+      <ul class="pricing-features">
+        <li>Manual dialing setup</li>
+        <li>VoIP billed separately</li>
+        <li>Simple agent interface</li>
+        <li>Ideal for small teams</li>
+        <li>Quick deployment</li>
+        <li>Technical support included</li>
+      </ul>
+      <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="pricing-btn" target="_blank">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- VIDEO SECTION -->
+<section id="video-section">
+  <div class="section-header" style="margin-bottom:3rem;">
+    <div class="section-tag reveal">Watch &amp; Learn</div>
+    <h2 class="section-title reveal">How Our <span class="grad">Dialer System</span> Works</h2>
+    <p class="section-subtitle reveal">See the power of our automated dialing technology in action. Watch how we transform your outbound calling operation.</p>
+  </div>
+  <div class="video-wrapper reveal">
+    <div class="video-placeholder" onclick="var h=Math.min(500, Math.max(220, Math.floor(window.innerWidth*0.56))); this.innerHTML='<iframe width=\'100%\' height=\''+h+'\' src=\'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1\' frameborder=\'0\' allow=\'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\' allowfullscreen style=\'display:block;width:100%\'></iframe>'">
+      <div class="video-bg-anim"></div>
+      <div class="video-corner tl"></div>
+      <div class="video-corner tr"></div>
+      <div class="video-corner bl"></div>
+      <div class="video-corner br"></div>
+      <div class="play-btn">▶️</div>
+      <div class="video-title-text">How Our Dialer System Works</div>
+      <div class="video-sub">Click to play demo video • 3:45 mins</div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="section-tag reveal">Client Reviews</div>
+    <h2 class="section-title reveal">What Our <span class="grad">Clients Say</span></h2>
+    <p class="section-subtitle reveal">Trusted by hundreds of call centers and businesses across the globe.</p>
+  </div>
+  <div class="testimonials-track-wrap reveal">
+    <div class="testimonials-track" id="testimonialsTrack"></div>
+  </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-tag reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Let's <span class="grad">Connect</span></h2>
+    <p class="section-subtitle reveal">Ready to supercharge your outbound operations? Reach out today and get set up within 24 hours.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <a href="https://wa.me/+923251679557" class="contact-card reveal" target="_blank" style="text-decoration:none;color:inherit;">
+        <div class="contact-card-icon">📱</div>
+        <div>
+          <div class="contact-card-label">WhatsApp</div>
+          <div class="contact-card-value">+92 325 1679557</div>
+        </div>
+      </a>
+      <a href="mailto:dmwebsolutions934@gmail.com" class="contact-card reveal delay-1" style="text-decoration:none;color:inherit;">
+        <div class="contact-card-icon">📧</div>
+        <div>
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-value">dmwebsolutions934@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-card reveal delay-2">
+        <div class="contact-card-icon">📍</div>
+        <div>
+          <div class="contact-card-label">Location</div>
+          <div class="contact-card-value">DHA Phase 4, Karachi, Pakistan</div>
+        </div>
+      </div>
+      <div class="map-container reveal delay-3">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.7!2d67.0!3d24.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f!2sDHA+Phase+4+Karachi!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="reveal delay-2">
+      <form class="contact-form" action="mailto:dmwebsolutions934@gmail.com" method="POST" enctype="text/plain">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input class="form-input" type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Interested In</label>
+          <input class="form-input" type="text" name="service" placeholder="e.g. Vici Dialer, Data Package...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" name="message" placeholder="Tell us about your requirements..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">🚀 Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">D M Web Solutions</div>
+      <div class="footer-tagline">Pakistan's premier provider of data packages, dialer systems, and VoIP solutions. Smart Data. Smarter Dialers. Serving businesses worldwide from Karachi.</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn">📘</a>
+        <a href="https://wa.me/message/AGRPNMEPWIPZM1" class="social-btn" target="_blank">💬</a>
+        <a href="#" class="social-btn">📷</a>
+        <a href="#" class="social-btn">🐦</a>
+        <a href="#" class="social-btn">💼</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Data Sales</a></li>
+        <li><a href="#services">Manual Dialer</a></li>
+        <li><a href="#services">Vici Dialer</a></li>
+        <li><a href="#services">Spoofing Dialer</a></li>
+        <li><a href="#services">IVR Dialer</a></li>
+        <li><a href="#services">VoIP Solutions</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#showcase">Products</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/+923251679557">📱 +92 325 1679557</a></li>
+        <li><a href="mailto:dmwebsolutions934@gmail.com">📧 Email Us</a></li>
+        <li><a href="#">📍 DHA Phase 4, Karachi</a></li>
+        <li><a href="https://wa.me/message/AGRPNMEPWIPZM1">💬 WhatsApp Chat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 <span>D M Web Solutions</span>. All rights reserved. CEO: Mr Danish</div>
+    <div class="footer-copy">Built with ❤️ in <span>Karachi, Pakistan</span></div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="https://wa.me/message/AGRPNMEPWIPZM1" class="floating-wa" target="_blank">
+  💬
+  <div class="wa-tooltip">Chat on WhatsApp</div>
+</a>
+<div class="scroll-top" id="scrollTop" role="button" tabindex="0" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})}">↑</div>
+
+<script>
+// ========== PRELOADER ==========
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hide');
+    const touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (!touch) document.body.classList.add('cursor-custom');
+  }, 2400);
+});
+
+// ========== CURSOR ==========
+const cursor = document.getElementById('cursor');
+const trail = document.getElementById('cursorTrail');
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
+if (!isTouch) {
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.12;
+    trailY += (mouseY - trailY) * 0.12;
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+  document.querySelectorAll('a, button, .service-card, .pricing-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; cursor.style.background = 'var(--neon-purple)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; cursor.style.background = 'var(--neon-blue)'; });
+  });
+}
+
+// ========== HERO CANVAS ==========
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], lines = [];
+function resizeCanvas() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5;
+    this.r = Math.random() * 2 + 0.5;
+    this.alpha = Math.random() * 0.6 + 0.2;
+    this.color = Math.random() > 0.5 ? '0,212,255' : '139,92,246';
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+function particleLimit() {
+  return W < 768 ? 48 : 96;
+}
+
+function drawConnections() {
+  const n = particleLimit();
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const alpha = (1 - dist / 120) * 0.25;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0,212,255,${alpha})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+// Data wave
+let waveOffset = 0;
+function drawWaves() {
+  for (let w = 0; w < 3; w++) {
+    ctx.beginPath();
+    const amp = 30 + w * 15;
+    const freq = 0.01 - w * 0.002;
+    const yBase = H * 0.6 + w * 40;
+    const alpha = 0.08 - w * 0.02;
+    ctx.moveTo(0, yBase);
+    for (let x = 0; x <= W; x += 4) {
+      const y = yBase + Math.sin(x * freq + waveOffset + w) * amp;
+      ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(0,212,255,${alpha})`;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+  waveOffset += 0.02;
+}
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, W, H);
+  drawWaves();
+  const n = particleLimit();
+  for (let i = 0; i < n; i++) {
+    particles[i].update();
+    particles[i].draw();
+  }
+  drawConnections();
+  requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+
+// ========== NAVBAR SCROLL ==========
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 80) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const st = document.getElementById('scrollTop');
+  if (window.scrollY > 400) st.classList.add('show');
+  else st.classList.remove('show');
+});
+
+// ========== HAMBURGER ==========
+const hamburgerEl = document.getElementById('hamburger');
+const mobileMenuEl = document.getElementById('mobileMenu');
+function setMenuOpen(open) {
+  mobileMenuEl.classList.toggle('active', open);
+  hamburgerEl.classList.toggle('is-open', open);
+  hamburgerEl.setAttribute('aria-expanded', open ? 'true' : 'false');
+  hamburgerEl.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburgerEl.addEventListener('click', () => setMenuOpen(!mobileMenuEl.classList.contains('active')));
+hamburgerEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMenuOpen(!mobileMenuEl.classList.contains('active')); }
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() { setMenuOpen(false); }
+
+// ========== REVEAL ON SCROLL ==========
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ========== COUNTERS ==========
+const counters = document.querySelectorAll('.counter');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = parseInt(e.target.dataset.target, 10);
+      if (isNaN(target)) return;
+      const suffix = e.target.dataset.suffix || '';
+      let start = 0;
+      const duration = 2000;
+      const step = Math.max(target / (duration / 16), 0.4);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) { start = target; clearInterval(timer); }
+        e.target.textContent = Math.floor(start) + suffix;
+      }, 16);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.35 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ========== SHOWCASE FILTER ==========
+function filterShowcase(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.showcase-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+      card.style.animation = 'fadeInUp 0.5s ease both';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ========== TESTIMONIALS ==========
+const testimonials = [
+  { text: "Best dialer setup I ever bought!", name: "Marcus Chen", role: "Call Center Manager", img: "https://i.pravatar.cc/96?img=12" },
+  { text: "Reliable data provider, highly recommended.", name: "Sarah Kensington", role: "Sales Director", img: "https://i.pravatar.cc/96?img=45" },
+  { text: "Fast service and great support.", name: "Omar Siddiqui", role: "Operations Head", img: "https://i.pravatar.cc/96?img=33" },
+  { text: "The VoIP rates are unbeatable. We switched from our old provider and cut our per-minute costs by 60%. Amazing!", name: "James Thornton", role: "Telecom Consultant", img: "https://i.pravatar.cc/96?img=13" },
+  { text: "Mr Danish and his team are professionals. Every issue resolved instantly. The spoofing dialer boosted our answer rate significantly.", name: "David Lowell", role: "Business Owner", img: "https://i.pravatar.cc/96?img=68" },
+  { text: "We've been ordering data packs for 3 months now. Quality is consistent, fresh, and well-segmented. Will keep ordering!", name: "Fatima Zahra", role: "Marketing Manager", img: "https://i.pravatar.cc/96?img=5" },
+  { text: "The manual dialer setup at $30 is a steal. Simple, effective, and the support team is always available.", name: "Ali Hassan", role: "Team Lead", img: "https://i.pravatar.cc/96?img=59" },
+  { text: "DM Web Solutions is the go-to for anyone serious about outbound. Their systems just work, no downtime, no hassle.", name: "Robert Miles", role: "CEO, CallPro Ltd.", img: "https://i.pravatar.cc/96?img=14" },
+];
+
+const track = document.getElementById('testimonialsTrack');
+const doubled = [...testimonials, ...testimonials];
+doubled.forEach(t => {
+  const card = document.createElement('div');
+  card.className = 'testimonial-card';
+  card.innerHTML = `
+    <div class="stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+    <div class="testimonial-text">"${t.text}"</div>
+    <div class="testimonial-author">
+      <div class="author-avatar"><img src="${t.img}" alt="" width="48" height="48" loading="lazy" decoding="async"></div>
+      <div>
+        <div class="author-name">${t.name}</div>
+        <div class="author-role">${t.role}</div>
+      </div>
+    </div>
+  `;
+  track.appendChild(card);
+});
+</script>
+</body>
+</html>
